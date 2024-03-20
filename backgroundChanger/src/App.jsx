@@ -7,8 +7,10 @@ function App() {
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("")
 
-    //useRef hook
-    const passwordRef = useRef(null)
+  const [color, setColor] = useState('blue')
+
+  //useRef hook
+  const passwordRef = useRef(null)
 
   const passwordGenerator = useCallback(() => {
     let pass = ""
@@ -30,9 +32,11 @@ function App() {
     passwordRef.current?.select();
     passwordRef.current?.setSelectionRange(0, 999);
     window.navigator.clipboard.writeText(password)
+    setColor('black')
   }, [password])
 
   useEffect(() => {
+    setColor('blue')
     passwordGenerator()
   }, [length, numAllowed, charAllowed, passwordGenerator])
 
@@ -40,22 +44,24 @@ function App() {
   return (
     <>
       <div>
-        <div className="max-w-md mx-auto rounded-lg px-4 py-2 text-black-500 "
+        <div className="max-w-md mx-auto rounded-lg px-3 py-1 text-black-500 "
           style={{ backgroundColor: '#f3a5cc' }}>
           <h1 className='text-white text-center my-16' style={{ fontSize: 30 }}>Password Generator</h1>
-          <div className="flex shadow rounded-lg overflow-hidden mb-3">
+          <div className="flex shadow rounded-lg overflow-hidden mb-3 h-10">
             <input
+              height={800}
               type="text"
               value={password}
               className="outline-none w-full py-1 px-3"
               placeholder="Password"
               readOnly
-            ref={passwordRef}
+              ref={passwordRef}
             />
 
             <button
+              style={{ backgroundColor: color }}
               onClick={copyPasswordToClipboard}
-              className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'
+              className='outline-none text-white px-7 py-0.5 shrink-0'
             >copy</button>
           </div>
 

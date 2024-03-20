@@ -6,14 +6,11 @@ import image from "./assets/bgimage.png";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    
     <div style={{ position: 'relative', overflow: 'hidden', height: '100vh' }}>
       {/* Background Image */}
       <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
+        position: 'absolute',top: 0,left: 0,width: '100%',height: '100%',
         backgroundImage: `url(${image})`,
         backgroundRepeat: 'repeat-x',
         // backgroundSize: 'cover',
